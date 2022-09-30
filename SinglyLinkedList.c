@@ -1,72 +1,44 @@
-#include <iostream>
-using namespace std;
-
-class Node {
-public:
-	int data;
-	Node* next;
-	Node()
-	{
-		data = 0;
-		next = NULL;
-	}
-	Node(int data)
-	{
-		this->data = data;
-		this->next = NULL;
-	}
+#include <stdio.h>
+#include <stdlib.h>
+  
+struct Node {
+    int data;
+    struct Node* next;
 };
 
-
-class Linkedlist {
-	Node* head;
-
-public:
-	Linkedlist() { head = NULL; }
-	void insertNode(int);
-	void printList();
-	void deleteNode(int);
-};
-
-
-
-void Linkedlist::insertNode(int data)
+void printList(struct Node* n)
 {
-	Node* newNode = new Node(data);
-	if (head == NULL) {
-		head = newNode;
-		return;
-	}
-	Node* temp = head;
-	while (temp->next != NULL) {
-		temp = temp->next;
-	}
-	temp->next = newNode;
+    while (n != NULL) {
+        printf(" %d ", n->data);
+        n = n->next;
+    }
 }
 
-
-void Linkedlist::printList()
+int main()
 {
-	Node* temp = head;
-	if (head == NULL) {
-		cout << "List empty" << endl;
-		return;
-	}
-	while (temp != NULL) {
-		cout << temp->data << " ";
-		temp = temp->next;
-	}
-}
+    struct Node* head = NULL;
+    struct Node* second = NULL;
+    struct Node* third = NULL;
+	struct Node* fourth = NULL;
+  
+    // allocate 3 nodes in the heap
+    head = (struct Node*)malloc(sizeof(struct Node));
+    second = (struct Node*)malloc(sizeof(struct Node));
+    third = (struct Node*)malloc(sizeof(struct Node));
+	fourth = (struct Node*)malloc(sizeof(struct Node));
+  
+    head->data = 1; 
+    head->next = second; 
+  
+    second->data = 2; 
+    second->next = third;
+  
+    third->data = 3; 
+    third->next = fourth;
 
+	fourth->data = 4;
+	fourth->next=NULL;
 
-int main(){
-	Linkedlist list;
-	list.insertNode(1);
-	list.insertNode(2);
-	list.insertNode(3);
-	list.insertNode(4);
-
-	cout << "Elements of the list are: ";
-	list.printList();
-	cout << endl;
+    printList(head);
+    return 0;
 }
