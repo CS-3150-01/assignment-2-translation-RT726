@@ -25,7 +25,7 @@ int main()
     head = (struct Node*)malloc(sizeof(struct Node));
     second = (struct Node*)malloc(sizeof(struct Node));
     third = (struct Node*)malloc(sizeof(struct Node));
-	fourth = (struct Node*)malloc(sizeof(struct Node));
+    fourth = (struct Node*)malloc(sizeof(struct Node));
   
     head->data = 1; 
     head->next = second; 
@@ -36,8 +36,8 @@ int main()
     third->data = 3; 
     third->next = fourth;
 
-	fourth->data = 4;
-	fourth->next=NULL;
+    fourth->data = 4;
+    fourth->next=NULL;
 
     printList(head);
     return 0;
